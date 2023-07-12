@@ -19,7 +19,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       # 3. フラッシュメッセージを定義し、詳細画面へリダイレクト
       flash[:notice] = "Book was successfully created."
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@book)
     else
       # redirect_to edit_book_path(book.id)
       render :edit

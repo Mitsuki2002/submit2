@@ -3,18 +3,18 @@
   <div>
     <% if @book.errors.any? %>
       <div class="error-count">
-        <p class="error-count-message">
+        <h2 class="error-count-message">
         <%= @book.errors.count %>errors prohibited this book from being saved:
-        </p>
+        </h2>
       </div>
       <div class="error-message">
         <span class="error-message-message">
           <% @book.errors.full_messages.each do |message| %>
-            <p><%= message %></p>
+            <li><%= message %></li>
           <% end %>
         </span>
       </div>
-      <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+      <%= form_with model: @book, url: book_path(@book), method: :patch do |f| %>
       <div class="red1">
         <h4>Title</h4>
       </div>
@@ -34,7 +34,7 @@
       </div>
       <% end %>
     <% else %>
-      <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+      <%= form_with model: @book, url: book_path(@book), method: :patch do |f| %>
       
         <h4>Title</h4>
         <%= f.text_field :title %>
@@ -45,5 +45,13 @@
         <%= f.submit 'Update Book' %>
       <% end %>
     <% end %>
+  </div>
+  <div class="link-box">
+    <div class="gray">
+        <%= link_to "Show", book_path(@book.id) %>
+    </div>
+    <div class="gray">
+      <a class="back_url" href="/books">Back</a>
+    </div>
   </div>
 </div>
